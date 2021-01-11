@@ -1,0 +1,80 @@
+[8:36 PM] Jack Gannon
+    
+
+from scipy.integrate import solve_ivp
+import numpy as np
+import matplotlib.pyplot as plt
+class Ball_system:
+    def __init__(self, length=2.3, velocity=5, x=0, y=0, theta=0): ## produce variable inputs for x1 , x2 and i
+self.mass = 0.425
+self.grav = velocity
+        self. = x # put in all my variables
+        #name exactly how i did in system dynamics
+self.x1 = x1
+        self.x2 = x2
+        self.i = i
+    def move(self, voltage):
+        z_initial = [self.x1, self.x2, self.i]
+        solution = solve_ivp(lambda time, z:
+                             self.system_dynamics(time, z, voltage),
+[0, dt],
+z_initial)
+        self.x1 = solution.y[0][-1]
+        self.x2 = solution.y[1][-1]
+        self.i = solution.y[2][-1]     #two dim. aray.. 
+        ## these are all constants line 26 except for
+def system_dynamics(self, t, z, v): 
+        L = self.L0 + self.L1 * np.exp(- self.alph * (self.delta - z[0]) )
+        x1_dot = z[1]
+        x2_dot = (1 / self.mass) *((5/7) * self.mass *self.grav * np.sin(np.deg2rad(ang))
+                                   + self.const_c * ((z[2]**2)/(self.delta - z[0])**2) - self.stiff *(z[0] - self.length) - self.visc * z[1])
+        i_dot =  (1 /L )* (v - z[2] * self.resistance)
+        return [x1_dot, x2_dot, i_dot]
+
+
+​[8:36 PM] Jack Gannon
+    b1
+​[8:37 PM] Jack Gannon
+    stuff needs filled in still
+​[8:58 PM] Jack Gannon
+    
+from scipy.integrate import solve_ivp
+import numpy as np
+import matplotlib.pyplot as plt
+class Ball_system:
+    def __init__(self, x1, x2 , i ): ## produce variable inputs for x1 , x2 and i
+self.mass = 0.425
+self.grav = velocity
+        self. = x # put in all my variables
+        #name exactly how i did in system dynamics
+self.x1 = x1
+        self.x2 = x2
+        self.i = i
+    def move(self, voltage):
+        z_initial = [self.x1, self.x2, self.i]
+        solution = solve_ivp(lambda time, z:
+                             self.system_dynamics(time, z, voltage),
+[0, dt],
+z_initial)
+        self.x1 = solution.y[0][-1]
+        self.x2 = solution.y[1][-1]
+        self.i = solution.y[2][-1]     #two dim. aray..
+        ## these are all constants line 26 except for
+def system_dynamics(self, t, z, v):
+        L = self.L0 + self.L1 * np.exp(- self.alph * (self.delta - z[0]) )
+        x1_dot = z[1]
+        x2_dot = (1 / self.mass) *((5/7) * self.mass *self.grav * np.sin(np.deg2rad(ang))
+                                   + self.const_c * ((z[2]**2)/(self.delta - z[0])**2) - self.stiff *(z[0] - self.length) - self.visc * z[1])
+        i_dot =  (1 /L )* (v - z[2] * self.resistance)
+        return [x1_dot, x2_dot, i_dot]dt = 0.01
+murphy = Ball_system(x1 =###, x2 = 0 , i =  )
+x1_cache = [murphy.x1]
+t_cache = [0]
+for num in range(1000):
+    murphy.move(0) # voltage input # for 0 volts what is the length of x
+x1_cache += [murphy.x1]
+    t_cache += [(num+1)*dt]
+plt.plot(t_cache, x1_cache)
+plt.grid()
+plt.show()
+
